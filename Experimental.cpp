@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Window/Keyboard.hpp>
 #include <string>
 int main(){
 	sf::RenderWindow window(sf::VideoMode(sf::VideoMode::getDesktopMode().width,sf::VideoMode::getDesktopMode().height),"Wallpaper");
@@ -21,7 +22,7 @@ int main(){
 	while(window.isOpen()){
 		sf::Event event;
 		while(window.pollEvent(event)){
-			if(event.type==sf::Event::Closed){
+			if(event.type==sf::Event::Closed ){
 				window.close();
 			}
 				
@@ -33,6 +34,9 @@ int main(){
 			if(event.key.code==sf::Keyboard::S){
 			cat.scale(0.9f,0.9f);
 			change*=0.9f;
+			}
+			if(event.key.code==sf::Keyboard::Q){
+					window.close();
 			}
 		}
 		}
