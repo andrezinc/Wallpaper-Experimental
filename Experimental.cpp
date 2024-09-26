@@ -1,14 +1,14 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <string>
-#include <iostream>
 int main(){
 	sf::RenderWindow window(sf::VideoMode(sf::VideoMode::getDesktopMode().width,sf::VideoMode::getDesktopMode().height),"Wallpaper");
+	window.setFramerateLimit(60);
 	window.setKeyRepeatEnabled(false);
 	sf::Texture image;
 	float j=2;
 	std::string vetor[10];
-	sf::Vector2f incr(0.9f,0.9f);
+	sf::Vector2f incr(7,7);
 	float change=0.4f;
 	for(int i=0;i<10;i++)
 		vetor[i]="fotos/imagem"+std::to_string(i)+".png";
@@ -24,18 +24,17 @@ int main(){
 			if(event.type==sf::Event::Closed){
 				window.close();
 			}
-		}		
+				
 		if(event.type == sf::Event::KeyPressed){
 			if(event.key.code==sf::Keyboard::W){
 			cat.scale(1.1f,1.1f);
 			change*=1.1f;
 			}
-		}
-		if(event.type == sf::Event::KeyPressed){
 			if(event.key.code==sf::Keyboard::S){
 			cat.scale(0.9f,0.9f);
 			change*=0.9f;
 			}
+		}
 		}
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
 				acres+=1;
@@ -43,7 +42,6 @@ int main(){
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
 				acres-=1;
 		}
-
 		if((cat.getPosition().x+(size.x*change/2)>window.getSize().x && incr.x>0)||(cat.getPosition().x - (size.x*change/2)< 0 && incr.x<0)){
 			incr.x = -incr.x;
 			j++;
